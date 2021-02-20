@@ -1,17 +1,1507 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="ru">
+<head>
+  <title>Корзина</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="robots" content="index, follow"/>
+  <link href="http://sotbisite.beget.tech//bitrix/js/main/core/css/core.min.css?15808319882854" type="text/css"
+        rel="stylesheet"/>
+
+  <script type="text/javascript" data-skip-moving="true">(function (w, d, n) {
+    var cl = "bx-core";
+    var ht = d.documentElement;
+    var htc = ht ? ht.className : undefined;
+    if (htc === undefined || htc.indexOf(cl) !== -1) {
+      return;
+    }
+    var ua = n.userAgent;
+    if (/(iPad;)|(iPhone;)/i.test(ua)) {
+      cl += " bx-ios";
+    } else if (/Android/i.test(ua)) {
+      cl += " bx-android";
+    }
+    cl += (/(ipad|iphone|android|mobile|touch)/i.test(ua) ? " bx-touch" : " bx-no-touch");
+    cl += w.devicePixelRatio && w.devicePixelRatio >= 2 ? " bx-retina" : " bx-no-retina";
+    var ieVersion = -1;
+    if (/AppleWebKit/.test(ua)) {
+      cl += " bx-chrome";
+    } else if ((ieVersion = getIeVersion()) > 0) {
+      cl += " bx-ie bx-ie" + ieVersion;
+      if (ieVersion > 7 && ieVersion < 10 && !isDoctype()) {
+        cl += " bx-quirks";
+      }
+    } else if (/Opera/.test(ua)) {
+      cl += " bx-opera";
+    } else if (/Gecko/.test(ua)) {
+      cl += " bx-firefox";
+    }
+    if (/Macintosh/i.test(ua)) {
+      cl += " bx-mac";
+    }
+    ht.className = htc ? htc + " " + cl : cl;
+
+    function isDoctype() {
+      if (d.compatMode) {
+        return d.compatMode == "CSS1Compat";
+      }
+      return d.documentElement && d.documentElement.clientHeight;
+    }
+
+    function getIeVersion() {
+      if (/Opera/i.test(ua) || /Webkit/i.test(ua) || /Firefox/i.test(ua) || /Chrome/i.test(ua)) {
+        return -1;
+      }
+      var rv = -1;
+      if (!!(w.MSStream) && !(w.ActiveXObject) && ("ActiveXObject" in w)) {
+        rv = 11;
+      } else if (!!d.documentMode && d.documentMode >= 10) {
+        rv = 10;
+      } else if (!!d.documentMode && d.documentMode >= 9) {
+        rv = 9;
+      } else if (d.attachEvent && !/Opera/.test(ua)) {
+        rv = 8;
+      }
+      if (rv == -1 || rv == 8) {
+        var re;
+        if (n.appName == "Microsoft Internet Explorer") {
+          re = new RegExp("MSIE ([0-9]+[\.0-9]*)");
+          if (re.exec(ua) != null) {
+            rv = parseFloat(RegExp.$1);
+          }
+        } else if (n.appName == "Netscape") {
+          rv = 11;
+          re = new RegExp("Trident/.*rv:([0-9]+[\.0-9]*)");
+          if (re.exec(ua) != null) {
+            rv = parseFloat(RegExp.$1);
+          }
+        }
+      }
+      return rv;
+    }
+  })(window, document, navigator);</script>
+
+
+  <link href="http://sotbisite.beget.tech//bitrix/js/ui/fonts/opensans/ui.font.opensans.min.css?15808319881861"
+        type="text/css" rel="stylesheet"/>
+  <link href="http://sotbisite.beget.tech//bitrix/js/main/core/css/core_popup.min.css?158083198815428" type="text/css"
+        rel="stylesheet"/>
+  <link href="http://sotbisite.beget.tech/bitrix/cache/css/s1/redisigne/page_43b183d9d8e9a868d5be23c4b750592f/page_43b183d9d8e9a868d5be23c4b750592f_v1.css?16062943806468" type="text/css"  rel="stylesheet" />
+  <link href="http://sotbisite.beget.tech/bitrix/cache/css/s1/redisigne/template_a118f0267c039ecca91b630973e78dc4/template_a118f0267c039ecca91b630973e78dc4_v1.css?1606294380209674" type="text/css"  data-template-style="true" rel="stylesheet" />
+  <link href="http://sotbisite.beget.tech//bitrix/panel/main/popup.min.css?158083203620704" type="text/css"
+        data-template-style="true" rel="stylesheet"/>
+  <link rel="stylesheet" href="./assets/css/loader.css">
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#CE4A9A">
+  <meta name="msapplication-navbutton-color" content="#CE4A9A">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#CE4A9A">
+
+
+  <style>
+    .item__metro .item__station--red::before {
+      background: url(/local/templates/redisigne/img/icon/metro-red.svg) center center no-repeat;
+    }
+
+    .item__metro .item__station--green::before {
+      background: url(/local/templates/redisigne/img/icon/metro-green.svg) center center no-repeat;
+    }
+  </style>
+
+  <!-- Google Tag Manager -->
+  <!-- End Google Tag Manager -->
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="http://sotbisite.beget.tech/https://www.googletagmanager.com/ns.html?id=GTM-W869K97"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+
+
+  <style>
+    .upper__cookie_block {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-between;
+      background: #CE4A9A;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      margin: auto;
+      font-size: 16px;
+      text-align: center;
+      padding: 7px 19px;
+      margin-bottom: -1px;
+      border-bottom: 1px solid white;
+    }
+
+    .upper__cookie_attention {
+      width: 20px;
+      height: 20px;
+      margin-right: 7px;
+      border-radius: 50%;
+      border: 1px solid white;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      line-height: 20px;
+      min-width: 20px;
+    }
+
+    .upper__cookie_close {
+      display: block;
+      position: absolute;
+      width: 18px;
+      height: 13px;
+      margin-top: 4px;
+      right: 10px;
+      background: url(/local/templates/redisigne/css/../img/icon/close-white.svg) center center no-repeat;
+      background-size: auto;
+      background-size: contain;
+      cursor: pointer;
+    }
+
+    @media (max-width: 1366px) {
+      .upper__cookie_block:after,
+      .upper__cookie_block:before {
+        position: absolute;
+        content: ' ';
+        width: 100%;
+        height: 100%;
+        background: #CE4A9A;
+        top: 0;
+        z-index: -1;
+      }
+
+      .upper__cookie_block:after {
+        left: -50%;
+      }
+
+      .upper__cookie_block:before {
+        right: -50%;
+      }
+    }
+
+    @media (max-width: 890px) {
+      .upper__cookie_block {
+        display: none;
+      }
+    }
+  </style>
+
+  <div class="header-background"></div>
+  <div class="box-header">
+    <header class="main-header wrapper">
+
+
+      <div class="container">
+        <a href="http://sotbisite.beget.tech/#" class="nav-list__mobil"><span>Назад</span></a>
+
+        <div class="middle-box">
+          <div class="middle-header">
+            <a class="main-header__logo" href="http://sotbisite.beget.tech//">
+              <img src="http://sotbisite.beget.tech//local/templates/redisigne/img/logo.svg"
+                   alt="Фиалка Аптека" width="252" height="35">
+            </a>
+
+            <ul class="list-style offer-list">
+              <li class="offer-list__item offer-list__item--pharmacy"><a class="link offer-link"
+                                                                         href="http://sotbisite.beget.tech//pharmacy/">Аптеки</a>
+              </li>
+              <li class="offer-list__item offer-list__item--delivery"><a class="link offer-link"
+                                                                         href="http://sotbisite.beget.tech//delivery/">Как
+                сделать заказ?</a></li>
+              <li class="offer-list__item offer-list__item--sale"><a class="link offer-link"
+                                                                     href="http://sotbisite.beget.tech//sales/">Акции</a>
+              </li>
+            </ul>
+
+            <p class="info info--time">Круглосуточно<br><span
+                    class="info--additional">режим работы аптек</span></p>
+            <p class="info info--phone">
+              <a href="http://sotbisite.beget.tech/tel:+78122920000">+7 (812) 292-00-00</a><br><span
+                    class="info--additional">круглосуточная справочная служба</span></p>
+
+
+          </div>
+
+          <a href="http://sotbisite.beget.tech//auth/" class="user-list--mobil" title="Авторизация"></a>
+
+          <div class="header-area">
+            <div class="header-search">
+              <div class="catalog-select">
+                <button class="button button--toggle catalog-select__button"><span
+                        class="close--mobil"></span>Каталог
+                </button>
+                <div class="catalog-block header__menu">
+                  <ul class="list-style catalog-select__list">
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_21">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/supplements/">БАДы и
+                        витамины</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_230">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/supplements/solgar/">Solgar</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_80">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/supplements/adults/">Взрослые</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_79">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/supplements/kids/">Детские</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_22">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/bio/">БИО товары</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_224">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/bio/bady/">БАДы</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_225">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/bio/biokosmetika/">Биокосметика</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_228">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/bio/hygiene_products/">Гигиенические
+                            изделия</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_226">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/bio/detskie_tovari/">Детские
+                            ЭКО товары</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_227">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/bio/food/">Продукты
+                            питания</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_229">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/bio/cleaners/">Чистящие
+                            средства</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_25">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/gomeopatiya/">Гомеопатические
+                        препараты</a>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_24">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/zdorovoe_pitanie/">Здоровое
+                        питание</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_237">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/zdorovoe_pitanie/mineral_water_and_juices/">Минеральная
+                            вода и соки</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_239">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/zdorovoe_pitanie/healthy_foods/">Продукты
+                            питания</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_238">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/zdorovoe_pitanie/tea_and_coffee/">Чаи
+                            и кофе</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_26">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/medical_products/">Изделия
+                        медицинского назначения</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_242">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medical_products/first_aid_kits/">Аптечки
+                            медицинские</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_243">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medical_products/therapeutic_hosiery__elastic_bandages__orthopedic_/">Лечебный
+                            трикотаж, эластичные бинты, бандажи</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_244">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medical_products/optics_and_related_products/">Оптика</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_240">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medical_products/dressings_syringes/">Перевязочные
+                            материалы, повязки, шприцы</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_246">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medical_products/raznoe/">Разное</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_241">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medical_products/for_personal_hygiene_and_comfort/">Товары
+                            для интимного здоровья и комфорта</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_245">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medical_products/uhod_za_lezhachimi_bolnymi/">Товары
+                            для ухода за лежачими больными</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_16">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/medications/">Лекарственные
+                        препараты</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_38">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/vaktsiny_i_syvorotki/">Вакцины
+                            и сыворотки</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_29">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/sprays/">Ингаляционные
+                            формы и спреи</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_30">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/injection/">Инъекционные
+                            формы лекарственных препаратов</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_32">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/drops/">Капли
+                            (уши, глаза, нос)</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_31">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/pills/">Лекарства
+                            в капсулах, таблетках, драже</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_33">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/naruzhnye_lekarstvennye_formy/">Мази,
+                            гели , кремы для наружного применения</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_37">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/meditsinskaya_literatura/">Медицинская
+                            литература</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_36">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/prochee/">Разное</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_34">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/rastvory_dlya_peroralnogo_priema/">Растворы,
+                            сиропы, суспензии</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_35">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medications/candles__suppositories__vaginal_tablets__creams/">Свечи,
+                            суппозитории, вагинальные таблетки, крема</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_19">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/cosmetics/">Лечебная
+                        косметика</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_64">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/a_derma/">A-Derma</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_342">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/apivita/">Apivita</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_51">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/avene/">Avene</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_52">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/bioderma/">Bioderma</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_73">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/cerave/">CeraVe</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_60">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/ducray/">Ducray</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_65">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/galenic/">Elancyl</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_59">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/filorga/">Filorga</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_331">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/hormeta/">Hormeta</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_61">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/klorane/">Klorane</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_66">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/kneipp/">Kneipp</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_48">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/la_roche_posay/">La
+                            roche-posay</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_69">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/laino/">Laino</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_49">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/lierac/">Lierac</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_343">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/martiderm/">Martiderm</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_53">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/merck/">Noreva</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_57">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/nuxe/">Nuxe</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_55">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/phytosolba/">Phytosolba
+                            (Phyto)</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_62">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/styx/">Styx</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_70">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/svr/">SVR</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_71">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/thymuskin/">Thymuskin</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_54">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/uriage/">Uriage</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_50">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/cosmetics/vichy/">Vichy</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_23">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/baby/">Мама и малыш</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_235">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/baby/vse_dlya_mamy/">Все
+                            для мамы</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_232">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/baby/baby_care_amp_hygiene/">Детская
+                            косметика и гигиена</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_231">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/baby/baby_food/">Детское
+                            питание</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_234">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/baby/diapers_napkins/">Подгузники
+                            для новорожденных</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_233">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/baby/nipples_pacifiers_toys/">Соски,
+                            пустышки, игрушки</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_236">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/baby/uhod_za_detmi/">Уход
+                            за детьми</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_17">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/medtech/">Медтехника</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_44">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medtech/glucometers/">Глюкометры</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_42">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medtech/ingalyatory/">Ингаляторы</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_41">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medtech/miscellaneous/">Прочее</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_40">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medtech/termometry/">Термометры</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_43">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/medtech/tonometers/">Тонометры</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_20">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/external/">Наружные
+                        средства</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_78">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/external/aromaterapiya/">Ароматерапия</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_77">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/external/balsams_external_application/">Бальзамы
+                            и гели</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_75">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/external/creams_for_bruises_and_bruises/">Кремы
+                            при ушибах и синяках</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_74">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/external/wound_healing_gels_and_creams/">Ранозаживляющие
+                            гели и кремы</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_76">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/external/reppelenty/">Средства
+                            от комаров, клещей </a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_28">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/tovary_ne_privyazannye_k_razdelam/">Разное</a>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_18">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/hygiene/">Товары для гигиены и
+                        ухода</a>
+                      <ul class="list-style category-list">
+                        <li class="catalog-select__item" id="bx_2335181978_47">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/hygiene/kosmeticheskie_sredstva/">Косметические
+                            средства</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_46">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/hygiene/hygienes/">Средства
+                            для личной гигиены</a>
+                        </li>
+                        <li class="catalog-select__item" id="bx_2335181978_45">
+                          <a class="link"
+                             href="http://sotbisite.beget.tech//catalog/hygiene/tools_oral_care/">Средства
+                            для ухода за полостью рта</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                    <li class="catalog-select__item-title catalog-select__outer"
+                        id="bx_2335181978_27">
+                      <a class="link catalog-select__title"
+                         href="http://sotbisite.beget.tech//catalog/herbs/">Травы и сборы</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="search__outer">
+
+
+                <form id="search" action="/catalog/" class="search-form"
+                      onsubmit="if($('#title-search-input').val().length<2) return false;">
+                  <div id="search-category">Категории</div>
+                  <ul class="list-categories">
+
+                    <li data-id="0"
+                        onclick="$('#search_cat').val(this.dataset.id);set_url('/catalog/');">Все
+                      категории
+                    </li>
+
+                    <li data-id="21" data-url="/catalog/supplements/"
+                        onclick="$('#search_cat').val(this.dataset.id);">БАДы и витамины
+                    </li>
+
+                    <li data-id="22" data-url="/catalog/bio/"
+                        onclick="$('#search_cat').val(this.dataset.id);">БИО товары
+                    </li>
+
+                    <li data-id="25" data-url="/catalog/gomeopatiya/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Гомеопатические препараты
+                    </li>
+
+                    <li data-id="24" data-url="/catalog/zdorovoe_pitanie/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Здоровое питание
+                    </li>
+
+                    <li data-id="26" data-url="/catalog/medical_products/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Изделия медицинского
+                      назначения
+                    </li>
+
+                    <li data-id="16" data-url="/catalog/medications/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Лекарственные препараты
+                    </li>
+
+                    <li data-id="19" data-url="/catalog/cosmetics/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Лечебная косметика
+                    </li>
+
+                    <li data-id="23" data-url="/catalog/baby/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Мама и малыш
+                    </li>
+
+                    <li data-id="17" data-url="/catalog/medtech/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Медтехника
+                    </li>
+
+                    <li data-id="20" data-url="/catalog/external/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Наружные средства
+                    </li>
+
+                    <li data-id="18" data-url="/catalog/hygiene/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Товары для гигиены и ухода
+                    </li>
+
+                    <li data-id="27" data-url="/catalog/herbs/"
+                        onclick="$('#search_cat').val(this.dataset.id);">Травы и сборы
+                    </li>
+                  </ul>
+                  <input id="title-search-input" type="text" placeholder=""
+                         onkeyup="if(this.value.length>1)$('#loop').addClass('active');else $('#loop').removeClass('active');"
+                         name="q" value=""
+                         autocomplete="off" class="search-form__field"/>
+
+                  <input type="hidden" name="cat" id="search_cat" value="0"/>
+
+                  <div class="placeholder">
+                    Начните вводить название товара
+                    <p class="placeholder-inner placeholder-warning">Введите поисковый запрос</p>
+                  </div>
+                  <button class="button-search" type="submit">Найти</button>
+
+
+                </form>
+                <a href="http://sotbisite.beget.tech//auth/" class="user-auth" title="Личный кабинет">Личный
+                  кабинет</a>
+
+
+              </div>
+              <div id="bx_basketFKauiI" class="bx-basket bx-opener">
+                <!--'start_frame_cache_bx_basketFKauiI'-->
+                <ul class="list-style shop-list">
+                  <li class="shop-list__item shop-list__item--favorites"><a class="link"
+                                                                            href="http://sotbisite.beget.tech//favorites/">
+                    <span class="number">0</span>
+                  </a></li>
+                  <li class="shop-list__item shop-list__item--card">
+                    <a class="link" href="http://sotbisite.beget.tech//personal/cart/">
+                      <span class="number">1</span>
+                    </a>
+                    <div class="shop-list__item--hover">
+                      <div class="card-hover__title">
+                        Корзина
+                      </div>
+                      <div class="card-hover__text">
+                        2 товара на <span>696.40 руб.</span>
+                        <div class="card-hover__close">
+
+                        </div>
+                      </div>
+                      <a href="http://sotbisite.beget.tech//personal/cart/"
+                         class="card-hover__button">Перейти</a>
+                    </div>
+                  </li>
+
+                </ul><!--'end_frame_cache_bx_basketFKauiI'--></div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="bx_basketT0kNhm" class="fixed-menu bx-basket bx-opener">
+          <!--'start_frame_cache_bx_basketT0kNhm'-->
+          <ul class="list-style shop-list">
+            <li class="shop-list__item shop-list__item--phone ">
+              <a class="link" href="http://sotbisite.beget.tech/tel:+78122920000">
+              </a>
+            </li>
+            <li class="shop-list__item shop-list__item--user ">
+              <a class="link" href="http://sotbisite.beget.tech//auth/">
+              </a>
+            </li>
+            <li class="shop-list__item shop-list__item--pharmacy ">
+              <a class="link" href="http://sotbisite.beget.tech//pharmacy/">
+              </a>
+            </li>
+            <li class="shop-list__item shop-list__item--favorites ">
+              <a class="link" href="http://sotbisite.beget.tech//favorites/">
+              </a>
+            </li>
+            <li class="shop-list__item shop-list__item--card active">
+              <a class="link" href="http://sotbisite.beget.tech//personal/cart/">
+                <span class="number">2</span>
+              </a>
+            </li>
+          </ul><!--'end_frame_cache_bx_basketT0kNhm'--></div>
+        <div class="mobile-menu">
+
+          <div class="mobile-menu__inner">
+
+            <button class="button button--toggle catalog-select__button">
+              <span class="close--mobil"></span>Каталог товаров
+            </button>
+
+            <p class="info info--time">Круглосуточно<br>
+              <span class="info--additional">режим работы аптек</span>
+            </p>
+
+            <p class="info info--phone">
+              <a href="http://sotbisite.beget.tech/tel:+78122920000">+7 (812) 292-00-00</a><br><span
+                    class="info--additional">круглосуточная справочная служба</span></p>
+
+
+            <ul class="list-style offer-list">
+              <li class="offer-list__item offer-list__item--delivery"><a class="link offer-link"
+                                                                         href="http://sotbisite.beget.tech//delivery/">Как
+                сделать заказ?</a></li>
+              <li class="offer-list__item offer-list__item--sale"><a class="link offer-link"
+                                                                     href="http://sotbisite.beget.tech//sales/">Акции
+                и скидки</a></li>
+            </ul>
+            <nav class="page-footer__nav">
+              <ul class="list-style nav-list nav-list--footer">
+                <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                              href="http://sotbisite.beget.tech//about/">О компании</a>
+                </li>
+                <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                              href="http://sotbisite.beget.tech//about/stati/novinki/">Новинки</a>
+                </li>
+                <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                              href="http://sotbisite.beget.tech//about/social_activities_and_charity/">Благотворительность</a>
+                </li>
+                <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                              href="http://sotbisite.beget.tech//discounts/">Дисконтная
+                  программа</a></li>
+                <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                              href="http://sotbisite.beget.tech//about/partners/">Партнеры</a>
+                </li>
+                <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                              href="http://sotbisite.beget.tech//about/jobs/">Вакансии</a>
+                </li>
+                <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                              href="http://sotbisite.beget.tech//reviews/">Отзывы</a>
+                </li>
+                <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                              href="http://sotbisite.beget.tech//about/contacts/">Контакты</a>
+                </li>
+              </ul>
+            </nav>
+
+
+            <ul class="list-style social-list">
+              <ul class="list-style social-list">
+                <li class="social-list__item">
+                  <a class="social-link"
+                     href="http://sotbisite.beget.tech/https://vk.com/aptekafialka" target="_blank">
+                    <img class="social-link__v"
+                         src="http://sotbisite.beget.tech//local/templates/redisigne/img/icon/vk.svg"
+                         width="17" height="10" alt="vk">
+                  </a>
+                </li>
+                <li class="social-list__item">
+                  <a class="social-link"
+                     href="http://sotbisite.beget.tech/https://www.facebook.com/fialkaapteka/"
+                     target="_blank">
+                    <img class="social-link__f"
+                         src="http://sotbisite.beget.tech//local/templates/redisigne/img/icon/f.svg"
+                         width="8" height="14" alt="facebook">
+                  </a>
+                </li>
+                <li class="social-list__item">
+                  <a class="social-link"
+                     href="http://sotbisite.beget.tech/https://www.instagram.com/apteka_fialka/"
+                     target="_blank">
+                    <img class="social-link__i"
+                         src="http://sotbisite.beget.tech//local/templates/redisigne/img/icon/i.svg"
+                         width="14" height="14" alt="instagram">
+                  </a>
+                </li>
+              </ul>
+            </ul>
+
+            <div class="licenses">
+
+              <img class="licenses__photo lazyload"
+                   data-src="http://sotbisite.beget.tech//local/templates/redisigne/img/license1.jpg">
+              <img class="licenses__photo lazyload"
+                   data-src="http://sotbisite.beget.tech//local/templates/redisigne/img/license2.jpg">
+              <img class="licenses__photo lazyload"
+                   data-src="http://sotbisite.beget.tech//local/templates/redisigne/img/license3.jpg">
+              <a href="http://sotbisite.beget.tech//about/litsenzii/" class="licenses__text">Все лицензии
+                аптек-партнеров</a></div>
+
+            <p class="cite">© 2020 Фиалка: информационно-справочная
+              служба Санкт-Петербурга.
+              <a class="link cite-link"
+                 href="http://sotbisite.beget.tech//about/pravovaya_informatsiya/polzovatelskoe_soglashenie/">
+                Пользовательское соглашение
+              </a>
+              <a class="link cite-link"
+                 href="http://sotbisite.beget.tech//about/pravovaya_informatsiya/polozhenie_o_politike_konfidentsialnosti_internet/">
+                Политика конфиденциальности
+              </a>
+              <a class="link cite-link"
+                 href="http://sotbisite.beget.tech//about/pravovaya_informatsiya/okhrana-truda/">Охрана
+                труда
+              </a></p>
+
+            <p class="oferta">
+              Информация на сайте не является публичной офертой.
+              Внешний вид товаров может отличаться от их изображений
+              на сайте. Имеются противопоказания. Перед применением
+              ознакомьтесь с инструкцией. </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="mobile-menu__titles">
+
+          <div class="mobile-menu__header">
+            <a href="http://sotbisite.beget.tech/#" class="nav-list__mobil"><span>Назад</span></a>
+
+            <a class="page-footer__logo" href="http://sotbisite.beget.tech//">
+              <img src="http://sotbisite.beget.tech//local/templates/redisigne/img/icon/footer-logo.svg"
+                   width="178" height="25">
+            </a>
+
+            <div class="user-list--mobil">
+
+            </div>
+          </div>
+          <div class="mobile-menu__head">Категории товаров</div>
+
+          <ul class="mobile-menu__catalog">
+            <li id="bx_305749280_21" class="mobile-menu__sub">
+              <div>БАДы и витамины
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    БАДы и витамины
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_230"><a
+                            href="http://sotbisite.beget.tech//catalog/supplements/solgar/">Solgar</a>
+                    </li>
+                    <li id="bx_305749280_80"><a
+                            href="http://sotbisite.beget.tech//catalog/supplements/adults/">Взрослые</a>
+                    </li>
+                    <li id="bx_305749280_79"><a
+                            href="http://sotbisite.beget.tech//catalog/supplements/kids/">Детские</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_22" class="mobile-menu__sub">
+              <div>БИО товары
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    БИО товары
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_224"><a
+                            href="http://sotbisite.beget.tech//catalog/bio/bady/">БАДы</a></li>
+                    <li id="bx_305749280_225"><a
+                            href="http://sotbisite.beget.tech//catalog/bio/biokosmetika/">Биокосметика</a>
+                    </li>
+                    <li id="bx_305749280_228"><a
+                            href="http://sotbisite.beget.tech//catalog/bio/hygiene_products/">Гигиенические
+                      изделия</a></li>
+                    <li id="bx_305749280_226"><a
+                            href="http://sotbisite.beget.tech//catalog/bio/detskie_tovari/">Детские
+                      ЭКО товары</a></li>
+                    <li id="bx_305749280_227"><a
+                            href="http://sotbisite.beget.tech//catalog/bio/food/">Продукты
+                      питания</a></li>
+                    <li id="bx_305749280_229"><a
+                            href="http://sotbisite.beget.tech//catalog/bio/cleaners/">Чистящие
+                      средства</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_25">
+              <a href="http://sotbisite.beget.tech//catalog/gomeopatiya/">Гомеопатические препараты</a>
+            </li>
+
+
+            <li id="bx_305749280_24" class="mobile-menu__sub">
+              <div>Здоровое питание
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    Здоровое питание
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_237"><a
+                            href="http://sotbisite.beget.tech//catalog/zdorovoe_pitanie/mineral_water_and_juices/">Минеральная
+                      вода и соки</a></li>
+                    <li id="bx_305749280_239"><a
+                            href="http://sotbisite.beget.tech//catalog/zdorovoe_pitanie/healthy_foods/">Продукты
+                      питания</a></li>
+                    <li id="bx_305749280_238"><a
+                            href="http://sotbisite.beget.tech//catalog/zdorovoe_pitanie/tea_and_coffee/">Чаи
+                      и кофе</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_26" class="mobile-menu__sub">
+              <div>Изделия медицинского назначения
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    Изделия медицинского назначения
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_242"><a
+                            href="http://sotbisite.beget.tech//catalog/medical_products/first_aid_kits/">Аптечки
+                      медицинские</a></li>
+                    <li id="bx_305749280_243"><a
+                            href="http://sotbisite.beget.tech//catalog/medical_products/therapeutic_hosiery__elastic_bandages__orthopedic_/">Лечебный
+                      трикотаж, эластичные бинты, бандажи</a></li>
+                    <li id="bx_305749280_244"><a
+                            href="http://sotbisite.beget.tech//catalog/medical_products/optics_and_related_products/">Оптика</a>
+                    </li>
+                    <li id="bx_305749280_240"><a
+                            href="http://sotbisite.beget.tech//catalog/medical_products/dressings_syringes/">Перевязочные
+                      материалы, повязки, шприцы</a></li>
+                    <li id="bx_305749280_246"><a
+                            href="http://sotbisite.beget.tech//catalog/medical_products/raznoe/">Разное</a>
+                    </li>
+                    <li id="bx_305749280_241"><a
+                            href="http://sotbisite.beget.tech//catalog/medical_products/for_personal_hygiene_and_comfort/">Товары
+                      для интимного здоровья и комфорта</a></li>
+                    <li id="bx_305749280_245"><a
+                            href="http://sotbisite.beget.tech//catalog/medical_products/uhod_za_lezhachimi_bolnymi/">Товары
+                      для ухода за лежачими больными</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_16" class="mobile-menu__sub">
+              <div>Лекарственные препараты
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    Лекарственные препараты
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_38"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/vaktsiny_i_syvorotki/">Вакцины
+                      и сыворотки</a></li>
+                    <li id="bx_305749280_29"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/sprays/">Ингаляционные
+                      формы и спреи</a></li>
+                    <li id="bx_305749280_30"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/injection/">Инъекционные
+                      формы лекарственных препаратов</a></li>
+                    <li id="bx_305749280_32"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/drops/">Капли
+                      (уши, глаза, нос)</a></li>
+                    <li id="bx_305749280_31"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/pills/">Лекарства
+                      в капсулах, таблетках, драже</a></li>
+                    <li id="bx_305749280_33"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/naruzhnye_lekarstvennye_formy/">Мази,
+                      гели , кремы для наружного применения</a></li>
+                    <li id="bx_305749280_37"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/meditsinskaya_literatura/">Медицинская
+                      литература</a></li>
+                    <li id="bx_305749280_36"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/prochee/">Разное</a>
+                    </li>
+                    <li id="bx_305749280_34"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/rastvory_dlya_peroralnogo_priema/">Растворы,
+                      сиропы, суспензии</a></li>
+                    <li id="bx_305749280_35"><a
+                            href="http://sotbisite.beget.tech//catalog/medications/candles__suppositories__vaginal_tablets__creams/">Свечи,
+                      суппозитории, вагинальные таблетки, крема</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_19" class="mobile-menu__sub">
+              <div>Лечебная косметика
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    Лечебная косметика
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_64"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/a_derma/">A-Derma</a>
+                    </li>
+                    <li id="bx_305749280_342"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/apivita/">Apivita</a>
+                    </li>
+                    <li id="bx_305749280_51"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/avene/">Avene</a>
+                    </li>
+                    <li id="bx_305749280_52"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/bioderma/">Bioderma</a>
+                    </li>
+                    <li id="bx_305749280_73"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/cerave/">CeraVe</a>
+                    </li>
+                    <li id="bx_305749280_60"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/ducray/">Ducray</a>
+                    </li>
+                    <li id="bx_305749280_65"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/galenic/">Elancyl</a>
+                    </li>
+                    <li id="bx_305749280_59"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/filorga/">Filorga</a>
+                    </li>
+                    <li id="bx_305749280_331"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/hormeta/">Hormeta</a>
+                    </li>
+                    <li id="bx_305749280_61"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/klorane/">Klorane</a>
+                    </li>
+                    <li id="bx_305749280_66"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/kneipp/">Kneipp</a>
+                    </li>
+                    <li id="bx_305749280_48"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/la_roche_posay/">La
+                      roche-posay</a></li>
+                    <li id="bx_305749280_69"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/laino/">Laino</a>
+                    </li>
+                    <li id="bx_305749280_49"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/lierac/">Lierac</a>
+                    </li>
+                    <li id="bx_305749280_343"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/martiderm/">Martiderm</a>
+                    </li>
+                    <li id="bx_305749280_53"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/merck/">Noreva</a>
+                    </li>
+                    <li id="bx_305749280_57"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/nuxe/">Nuxe</a>
+                    </li>
+                    <li id="bx_305749280_55"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/phytosolba/">Phytosolba
+                      (Phyto)</a></li>
+                    <li id="bx_305749280_62"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/styx/">Styx</a>
+                    </li>
+                    <li id="bx_305749280_70"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/svr/">SVR</a></li>
+                    <li id="bx_305749280_71"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/thymuskin/">Thymuskin</a>
+                    </li>
+                    <li id="bx_305749280_54"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/uriage/">Uriage</a>
+                    </li>
+                    <li id="bx_305749280_50"><a
+                            href="http://sotbisite.beget.tech//catalog/cosmetics/vichy/">Vichy</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_23" class="mobile-menu__sub">
+              <div>Мама и малыш
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    Мама и малыш
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_235"><a
+                            href="http://sotbisite.beget.tech//catalog/baby/vse_dlya_mamy/">Все для
+                      мамы</a></li>
+                    <li id="bx_305749280_232"><a
+                            href="http://sotbisite.beget.tech//catalog/baby/baby_care_amp_hygiene/">Детская
+                      косметика и гигиена</a></li>
+                    <li id="bx_305749280_231"><a
+                            href="http://sotbisite.beget.tech//catalog/baby/baby_food/">Детское
+                      питание</a></li>
+                    <li id="bx_305749280_234"><a
+                            href="http://sotbisite.beget.tech//catalog/baby/diapers_napkins/">Подгузники
+                      для новорожденных</a></li>
+                    <li id="bx_305749280_233"><a
+                            href="http://sotbisite.beget.tech//catalog/baby/nipples_pacifiers_toys/">Соски,
+                      пустышки, игрушки</a></li>
+                    <li id="bx_305749280_236"><a
+                            href="http://sotbisite.beget.tech//catalog/baby/uhod_za_detmi/">Уход за
+                      детьми</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_17" class="mobile-menu__sub">
+              <div>Медтехника
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    Медтехника
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_44"><a
+                            href="http://sotbisite.beget.tech//catalog/medtech/glucometers/">Глюкометры</a>
+                    </li>
+                    <li id="bx_305749280_42"><a
+                            href="http://sotbisite.beget.tech//catalog/medtech/ingalyatory/">Ингаляторы</a>
+                    </li>
+                    <li id="bx_305749280_41"><a
+                            href="http://sotbisite.beget.tech//catalog/medtech/miscellaneous/">Прочее</a>
+                    </li>
+                    <li id="bx_305749280_40"><a
+                            href="http://sotbisite.beget.tech//catalog/medtech/termometry/">Термометры</a>
+                    </li>
+                    <li id="bx_305749280_43"><a
+                            href="http://sotbisite.beget.tech//catalog/medtech/tonometers/">Тонометры</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_20" class="mobile-menu__sub">
+              <div>Наружные средства
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    Наружные средства
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_78"><a
+                            href="http://sotbisite.beget.tech//catalog/external/aromaterapiya/">Ароматерапия</a>
+                    </li>
+                    <li id="bx_305749280_77"><a
+                            href="http://sotbisite.beget.tech//catalog/external/balsams_external_application/">Бальзамы
+                      и гели</a></li>
+                    <li id="bx_305749280_75"><a
+                            href="http://sotbisite.beget.tech//catalog/external/creams_for_bruises_and_bruises/">Кремы
+                      при ушибах и синяках</a></li>
+                    <li id="bx_305749280_74"><a
+                            href="http://sotbisite.beget.tech//catalog/external/wound_healing_gels_and_creams/">Ранозаживляющие
+                      гели и кремы</a></li>
+                    <li id="bx_305749280_76"><a
+                            href="http://sotbisite.beget.tech//catalog/external/reppelenty/">Средства
+                      от комаров, клещей </a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_28">
+              <a href="http://sotbisite.beget.tech//catalog/tovary_ne_privyazannye_k_razdelam/">Разное</a>
+            </li>
+
+
+            <li id="bx_305749280_18" class="mobile-menu__sub">
+              <div>Товары для гигиены и ухода
+                <div class="mobile-menu__text">
+                  <div class="mobile-menu__item">
+                    Товары для гигиены и ухода
+                  </div>
+                  <ul class="mobile-menu__full">
+                    <li id="bx_305749280_47"><a
+                            href="http://sotbisite.beget.tech//catalog/hygiene/kosmeticheskie_sredstva/">Косметические
+                      средства</a></li>
+                    <li id="bx_305749280_46"><a
+                            href="http://sotbisite.beget.tech//catalog/hygiene/hygienes/">Средства
+                      для личной гигиены</a></li>
+                    <li id="bx_305749280_45"><a
+                            href="http://sotbisite.beget.tech//catalog/hygiene/tools_oral_care/">Средства
+                      для ухода за полостью рта</a></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+
+            <li id="bx_305749280_27">
+              <a href="http://sotbisite.beget.tech//catalog/herbs/">Травы и сборы</a>
+            </li>
+
+
+          </ul>
+
+
+        </div>
+
+      </div>
+
+    </header>
+  </div>
+  <div id="app"></div>
+
+  <div class="footer__empty">
+
+  </div>
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="page-footer__inner">
+        <div class="left-column">
+          <a class="page-footer__logo" href="http://sotbisite.beget.tech//">
+            <img src="http://sotbisite.beget.tech//local/templates/redisigne/img/icon/footer-logo.svg"
+                 width="178" height="25">
+          </a>
+          <ul class="list-style social-list">
+            <li class="social-list__item">
+              <a class="social-link" href="http://sotbisite.beget.tech/https://vk.com/aptekafialka"
+                 target="_blank">
+                <img class="social-link__v"
+                     src="http://sotbisite.beget.tech//local/templates/redisigne/img/icon/vk.svg"
+                     width="17" height="10" alt="vk">
+              </a>
+            </li>
+            <li class="social-list__item">
+              <a class="social-link"
+                 href="http://sotbisite.beget.tech/https://www.facebook.com/fialkaapteka/"
+                 target="_blank">
+                <img class="social-link__f"
+                     src="http://sotbisite.beget.tech//local/templates/redisigne/img/icon/f.svg"
+                     width="8" height="14" alt="facebook">
+              </a>
+            </li>
+            <li class="social-list__item">
+              <a class="social-link"
+                 href="http://sotbisite.beget.tech/https://www.instagram.com/apteka_fialka/"
+                 target="_blank">
+                <img class="social-link__i"
+                     src="http://sotbisite.beget.tech//local/templates/redisigne/img/icon/i.svg"
+                     width="14" height="14" alt="instagram">
+              </a>
+            </li>
+          </ul>
+
+        </div>
+
+        <nav class="page-footer__nav">
+          <ul class="list-style nav-list nav-list--footer">
+            <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                          href="http://sotbisite.beget.tech//about/">О компании</a></li>
+            <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                          href="http://sotbisite.beget.tech//about/stati/novinki/">Новинки</a>
+            </li>
+            <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                          href="http://sotbisite.beget.tech//about/social_activities_and_charity/">Благотворительность</a>
+            </li>
+            <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                          href="http://sotbisite.beget.tech//discounts/">Дисконтная
+              программа</a></li>
+            <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                          href="http://sotbisite.beget.tech//about/partners/">Партнеры</a>
+            </li>
+            <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                          href="http://sotbisite.beget.tech//about/jobs/">Вакансии</a></li>
+            <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                          href="http://sotbisite.beget.tech//reviews/">Отзывы</a></li>
+            <li class="nav-list__item"><a class="link nav-link nav-link--footer"
+                                          href="http://sotbisite.beget.tech//about/contacts/">Контакты</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="info-column">
+          <p class="info info--footer">Круглосуточно<br><span
+                  class="info--additional">режим работы аптек</span></p>
+
+          <p class="info info--footer"><a href="http://sotbisite.beget.tech/tel:+78122920000">+7 (812)
+            292-00-00</a><br><span class="info--additional">круглосуточная справочная служба</span></p>
+
+          <p class="info info--footer">с 9:00 до 21:00<br><span class="info--additional">бронирование и доставка</span>
+          </p></div>
+
+        <div class="licenses">
+
+          <img class="licenses__photo lazyload"
+               data-src="http://sotbisite.beget.tech//local/templates/redisigne/img/license1.jpg">
+          <img class="licenses__photo lazyload"
+               data-src="http://sotbisite.beget.tech//local/templates/redisigne/img/license2.jpg">
+          <img class="licenses__photo lazyload"
+               data-src="http://sotbisite.beget.tech//local/templates/redisigne/img/license3.jpg">
+          <a href="http://sotbisite.beget.tech//about/litsenzii/" class="licenses__text">Все лицензии
+            аптек-партнеров</a></div>
+        <div class="licenses" style="width:150px;">
+          <img class="licenses__photo lazyload"
+               data-src="http://sotbisite.beget.tech//upload/3fd4f02a9f6bce47f872fd4ec110c6d0.png"
+               style="height:60px;">
+          <a href="http://sotbisite.beget.tech//about/litsenzii/" class="licenses__text">Разрешение
+            аптеки-партнера</a></div>
+
+        <p class="cite">© 2020 Фиалка: информационно-справочная
+          служба Санкт-Петербурга.
+          <a class="link cite-link"
+             href="http://sotbisite.beget.tech//about/pravovaya_informatsiya/polzovatelskoe_soglashenie/">
+            Пользовательское соглашение
+          </a>
+          <a class="link cite-link"
+             href="http://sotbisite.beget.tech//about/pravovaya_informatsiya/polozhenie_o_politike_konfidentsialnosti_internet/">
+            Политика конфиденциальности
+          </a>
+          <a class="link cite-link"
+             href="http://sotbisite.beget.tech//about/pravovaya_informatsiya/okhrana-truda/">Охрана труда
+          </a></p>
+
+        <p class="page-footer__offer">
+          Информация на сайте не является публичной офертой.
+          Внешний вид товаров может отличаться от их изображений
+          на сайте. Имеются противопоказания. Перед применением
+          ознакомьтесь с инструкцией. </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <div class="bottom__cookie_block" style="background:#CE4A9A">
+    <span class="bottom__cookie_message" style="color:#ffffff">Данный сайт может использовать файлы «cookie» с целью персонализации сервисов и повышения удобства пользования веб-сайтом. Если вы не хотите получать файлы «cookie», измените настройки браузера.</span>
+    <a class="bottom__cookie_hide" href="http://sotbisite.beget.tech/javascript:void(0);" title="ОК"
+       style="background:#ffffff;color:#CE4A9A;">
+      ОК </a>
+  </div>
+
+  <script type="text/javascript">if (!window.BX) window.BX = {};
+  if (!window.BX.message) window.BX.message = function (mess) {
+    if (typeof mess == 'object') for (var i in mess) BX.message[i] = mess[i];
+    return true;
+  };</script>
+  <script type="text/javascript">(window.BX || top.BX).message({
+    'JS_CORE_LOADING': 'Загрузка...',
+    'JS_CORE_NO_DATA': '- Нет данных -',
+    'JS_CORE_WINDOW_CLOSE': 'Закрыть',
+    'JS_CORE_WINDOW_EXPAND': 'Развернуть',
+    'JS_CORE_WINDOW_NARROW': 'Свернуть в окно',
+    'JS_CORE_WINDOW_SAVE': 'Сохранить',
+    'JS_CORE_WINDOW_CANCEL': 'Отменить',
+    'JS_CORE_WINDOW_CONTINUE': 'Продолжить',
+    'JS_CORE_H': 'ч',
+    'JS_CORE_M': 'м',
+    'JS_CORE_S': 'с',
+    'JSADM_AI_HIDE_EXTRA': 'Скрыть лишние',
+    'JSADM_AI_ALL_NOTIF': 'Показать все',
+    'JSADM_AUTH_REQ': 'Требуется авторизация!',
+    'JS_CORE_WINDOW_AUTH': 'Войти',
+    'JS_CORE_IMAGE_FULL': 'Полный размер'
+  });</script>
+  <script type="text/javascript"
+          src="http://sotbisite.beget.tech//bitrix/js/main/core/core.min.js?1580831989246515"></script>
+  <script>BX.setJSList(['/bitrix/js/main/core/core_ajax.js', '/bitrix/js/main/core/core_promise.js', '/bitrix/js/main/polyfill/promise/js/promise.js', '/bitrix/js/main/loadext/loadext.js', '/bitrix/js/main/loadext/extension.js', '/bitrix/js/main/polyfill/promise/js/promise.js', '/bitrix/js/main/polyfill/find/js/find.js', '/bitrix/js/main/polyfill/includes/js/includes.js', '/bitrix/js/main/polyfill/matches/js/matches.js', '/bitrix/js/ui/polyfill/closest/js/closest.js', '/bitrix/js/main/polyfill/fill/main.polyfill.fill.js', '/bitrix/js/main/polyfill/find/js/find.js', '/bitrix/js/main/polyfill/matches/js/matches.js', '/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js', '/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js', '/bitrix/js/main/lazyload/dist/lazyload.bundle.js', '/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js', '/bitrix/js/main/parambag/dist/parambag.bundle.js']);
+  BX.setCSSList(['/bitrix/js/main/lazyload/dist/lazyload.bundle.css', '/bitrix/js/main/parambag/dist/parambag.bundle.css']);</script>
+  <script type="text/javascript">(window.BX || top.BX).message({
+    'LANGUAGE_ID': 'ru',
+    'FORMAT_DATE': 'DD.MM.YYYY',
+    'FORMAT_DATETIME': 'DD.MM.YYYY HH:MI:SS',
+    'COOKIE_PREFIX': 'BITRIX_SM',
+    'SERVER_TZ_OFFSET': '10800',
+    'SITE_ID': 's1',
+    'SITE_DIR': '/',
+    'USER_ID': '',
+    'SERVER_TIME': '1605615023',
+    'USER_TZ_OFFSET': '0',
+    'USER_TZ_AUTO': 'Y',
+    'bitrix_sessid': 'e086627b8d1b0b1df57612c58b23a9d9'
+  });</script>
+  <script type="text/javascript"
+          src="http://sotbisite.beget.tech//bitrix/cache/js/s1/redisigne/kernel_main/kernel_main_v1.js?1605609954168395"></script>
+  <script type="text/javascript"
+          src="http://sotbisite.beget.tech//bitrix/js/main/core/core_popup.min.js?158083198952463"></script>
+  <script type="text/javascript"
+          src="http://sotbisite.beget.tech/https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+  <script type="text/javascript">BX.setJSList(['/bitrix/js/main/core/core_fx.js', '/bitrix/js/main/core/core_window.js', '/bitrix/js/main/date/main.date.js', '/bitrix/js/main/core/core_date.js', '/bitrix/js/main/utils.js', '/local/templates/redisigne/components/bitrix/sale.basket.basket/main/script.js', '/local/templates/redisigne/js/jquery-3.4.1.min.js', '/local/templates/redisigne/js/jquery.cookie.min.js', '/local/templates/redisigne/js/jquery.inputmask.min.js', '/local/templates/redisigne/js/jquery.validate.min.js', '/local/templates/redisigne/js/additional-methods.min.js', '/local/templates/redisigne/js/main.js', '/local/templates/redisigne/js/costume.js', '/local/templates/redisigne/js/lazysizes.min.js', '/local/templates/redisigne/js/tooltipster.bundle.min.js', '/bitrix/components/bitrix/search.title/script.js', '/local/templates/redisigne/components/bitrix/search.title/visual/script.js', '/local/templates/redisigne/components/bitrix/sale.basket.basket.line/main/script.js', '/local/templates/redisigne/components/bitrix/sale.basket.basket.line/mob/script.js', '/local/components/sotbi/cookienotify.component/templates/.default/script.js']); </script>
+  <script type="text/javascript">BX.setCSSList(['/local/templates/redisigne/components/bitrix/sale.basket.basket/main/style.css', '/local/templates/redisigne/components/bitrix/news.list/apteki-modal/style.css', '/local/templates/redisigne/css/main.min.css', '/local/templates/redisigne/css/tooltipster.bundle.min.css', '/local/templates/redisigne/css/tooltipster-sideTip-shadow.min.css', '/local/templates/redisigne/components/bitrix/search.title/visual/style.css', '/local/components/sotbi/cookienotify.component/templates/.default/style.css', '/local/templates/redisigne/template_styles.css']); </script>
+  <script type="text/javascript"
+          src="http://sotbisite.beget.tech//bitrix/cache/js/s1/redisigne/template_15ed783cf9f0438b5d0810b457a7160f/template_15ed783cf9f0438b5d0810b457a7160f_v1.js?1605531515320048"></script>
+  <script type="text/javascript"
+          src="http://sotbisite.beget.tech//bitrix/cache/js/s1/redisigne/page_0584bbe9deee7777bb76e5be9fcce8fb/page_0584bbe9deee7777bb76e5be9fcce8fb_v1.js?160553151596830"></script>
+  <script>
+    $(document).ready(function () {
+      $(document).off('click', '.quantity button');
+    })
+  </script>
+</body>
 </html>
